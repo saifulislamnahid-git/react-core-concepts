@@ -3,20 +3,40 @@ import './App.css';
 
 function App() {
 
+  const nayoks = ['Rajjak','Bappi','Sakib khan', 'Riyaj','Bappa Raj'];
   const products = [
     {name: 'Photoshop', price: '$17'},
     {name: 'Illustrator', price: '$14'},
+    {name: 'PDF Viewer', price: '$18'},
+  ]
+
+  const friends = [
+    {name: 'Anas Miah', age: '18'},
+    {name: 'Emon Sarker', age: '20'}
   ]
 
   return (
     <div className="App">
       <header className="App-header">
-        <Product product={products[0]}></Product>
-        <Product product={products[1]}></Product>
-
+        
+        <ul>
+          {
+            nayoks.map(nayok => <li>{nayok}</li>)
+          }
+          {
+            products.map(product => <li>{product.name}</li>)
+          }
+        </ul>
         <p>I am a react Person</p>
+        {
+          products.map(pd => <Product product={pd}></Product>)
+        }
         <Person name="Saiful islam" job="Freelancer"></Person>
         <Person name="Masudur Rahman" job="Freelancer"></Person>
+
+        {
+          friends.map(fd => <Friend friend={fd}></Friend>)
+        }
       </header>
     </div>
   );
@@ -32,7 +52,6 @@ function Product(props){
     float: 'left'
   }
   const {name, price} = props.product;
-  console.log(name, price);
   return(
     <div style={productStyle}>
       <h4>{name}</h4>
@@ -50,6 +69,19 @@ function Person(props){
     </div>
   )
 }
+
+
+function Friend(props){
+  const {name, age} = props.friend;
+
+  return (
+    <div>
+      <h3>Friend Name: {name}</h3>
+      <h2>Friend Age: {age}</h2>
+    </div>
+  )
+}
+
 
 
 
