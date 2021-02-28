@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
             products.map(product => <li>{product.name}</li>)
           }
         </ul>
+        <Counter></Counter>
         <p>I am a react Person</p>
         {
           products.map(pd => <Product product={pd}></Product>)
@@ -37,6 +39,7 @@ function App() {
         {
           friends.map(fd => <Friend friend={fd}></Friend>)
         }
+        
       </header>
     </div>
   );
@@ -70,6 +73,17 @@ function Person(props){
   )
 }
 
+function Counter(){
+  const [count, setCount] = useState(0);
+  const handleIncrease = () => setCount(count+1);
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count - 1)}>Decrease</button>
+      <button onClick={handleIncrease}>Increase</button>
+    </div>
+  )
+}
 
 function Friend(props){
   const {name, age} = props.friend;
